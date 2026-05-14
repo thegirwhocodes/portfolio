@@ -1,65 +1,266 @@
-import Image from "next/image";
+import Link from "next/link";
+
+const EMAIL = "nivie@wesleyan.edu";
+const LINKEDIN = "https://linkedin.com/in/naomi-ivie";
+const RESUME = "/Naomi-Ivie-Resume.pdf";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main className="mx-auto max-w-2xl px-6 py-20 sm:px-8 sm:py-28 md:py-32">
+      {/* HEADER */}
+      <header className="mb-20 md:mb-24">
+        <h1 className="font-serif text-5xl tracking-tight text-[var(--color-ink)] sm:text-6xl">
+          Naomi Ivie
+        </h1>
+        <p className="mt-5 text-base leading-relaxed text-[var(--color-ink)] sm:text-lg">
+          Founder of{" "}
+          <Link
+            href="https://sabi.eduforequality.org"
+            className="border-b border-[var(--color-rule)] hover:border-[var(--color-accent)]"
+          >
+            Sabi
+          </Link>
+          . I build voice AI that teaches Nigerian children to read on any
+          phone — no internet, no smartphone, no cost to the family.
+        </p>
+        <p className="mt-3 text-sm leading-relaxed text-[var(--color-muted)]">
+          Wesleyan ’27, Economics &amp; Data Analysis. Based between
+          Middletown and Lagos.
+        </p>
+
+        <nav className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+          <Link
+            href={`mailto:${EMAIL}`}
+            className="border-b border-[var(--color-rule)] pb-px hover:border-[var(--color-accent)]"
+          >
+            Email
+          </Link>
+          <Link
+            href={LINKEDIN}
+            className="border-b border-[var(--color-rule)] pb-px hover:border-[var(--color-accent)]"
+            target="_blank"
+            rel="noopener"
+          >
+            LinkedIn
+          </Link>
+          <Link
+            href={RESUME}
+            className="border-b border-[var(--color-rule)] pb-px hover:border-[var(--color-accent)]"
+            target="_blank"
+            rel="noopener"
+          >
+            Resume
+          </Link>
+        </nav>
+      </header>
+
+      {/* WORK */}
+      <section className="mb-20 md:mb-24">
+        <SectionLabel>Work</SectionLabel>
+
+        <article className="mt-10">
+          <div className="flex items-baseline justify-between gap-4">
+            <h2 className="font-serif text-2xl tracking-tight">Sabi</h2>
+            <span className="text-xs uppercase tracking-widest text-[var(--color-muted)]">
+              2026 — Now
+            </span>
+          </div>
+          <p className="mt-3 text-[15px] leading-relaxed text-[var(--color-ink)]">
+            A voice AI tutor for the 20+ million Nigerian children out of
+            school and the 70% of ten-year-olds who cannot read a sentence.
+            Five-to-seven-minute phone calls on any $5 feature phone — no
+            internet, no smartphone, no cost to the family. I built the full
+            pipeline: Whisper for Nigerian-accented speech, Claude as the
+            tutor, a custom voice clone for warmth, on a self-hosted GPU
+            server.
           </p>
+          <p className="mt-3 text-[15px] leading-relaxed text-[var(--color-muted)]">
+            MIT Sloan Africa Business Challenge — 2nd place. Wesleyan New
+            Venture Awards — Grand Prize. UNICEF AI Ventures Accelerator —
+            inaugural cohort, $10K equity-free. Schmidt Futures × Rhodes
+            Trust Rise for the World — finalist. Patricelli Center for
+            Entrepreneurship — Social Impact Fellow.
+          </p>
+          <p className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-sm">
+            <Link
+              href="https://sabi.eduforequality.org"
+              target="_blank"
+              rel="noopener"
+              className="border-b border-[var(--color-rule)] hover:border-[var(--color-accent)]"
+            >
+              sabi.eduforequality.org ↗
+            </Link>
+            <Link
+              href="https://eduforequality.org"
+              target="_blank"
+              rel="noopener"
+              className="border-b border-[var(--color-rule)] hover:border-[var(--color-accent)]"
+            >
+              eduforequality.org ↗
+            </Link>
+          </p>
+        </article>
+
+        <article className="mt-12">
+          <div className="flex items-baseline justify-between gap-4">
+            <h2 className="font-serif text-2xl tracking-tight">Adjutant</h2>
+            <span className="text-xs uppercase tracking-widest text-[var(--color-muted)]">
+              SCSP 2026
+            </span>
+          </div>
+          <p className="mt-3 text-[15px] leading-relaxed text-[var(--color-ink)]">
+            Voice-first, fully offline AI assistant for the three million
+            U.S. service members buried in paperwork. A junior NCO talks to
+            it the way they’d talk to their S1 — and gets back a
+            regulation-cited answer plus a populated DA-31 PDF. Same flow
+            for travel vouchers and counseling. Runs locally on an 8 GB
+            laptop. Submitted to the SCSP Hackathon GenAI.mil track.
+          </p>
+        </article>
+
+        <article className="mt-12">
+          <div className="flex items-baseline justify-between gap-4">
+            <h2 className="font-serif text-2xl tracking-tight">
+              Morgan Hacks — ASL to Speech
+            </h2>
+            <span className="text-xs uppercase tracking-widest text-[var(--color-muted)]">
+              2026 · 1st place
+            </span>
+          </div>
+          <p className="mt-3 text-[15px] leading-relaxed text-[var(--color-ink)]">
+            A model that recognizes American Sign Language and converts it
+            to spoken language in real time. Built in a weekend, won first
+            place.
+          </p>
+        </article>
+      </section>
+
+      {/* HONORS */}
+      <section className="mb-20 md:mb-24">
+        <SectionLabel>Recognition</SectionLabel>
+        <ul className="mt-10 space-y-3 text-[15px] leading-relaxed">
+          <Honor year="2026" body="MIT Sloan Africa Business Challenge — 2nd place" />
+          <Honor year="2026" body="Wesleyan New Venture Awards — Grand Prize (selected from 37 ventures)" />
+          <Honor year="2026" body="UNICEF AI Ventures Accelerator — inaugural cohort" />
+          <Honor year="2026" body="Morgan Hacks — Hackathon 1st place" />
+          <Honor year="2026" body="Schmidt Futures × Rhodes Trust Rise for the World — finalist" />
+          <Honor year="2025" body="Oxford Map the System — Runner Up, Wesleyan Round" />
+          <Honor year="2023" body="Wesleyan African Scholars — inaugural cohort, $360K merit scholarship" />
+          <Honor year="2021" body="High School Valedictorian · Best Student in Economics" />
+        </ul>
+      </section>
+
+      {/* BACKGROUND */}
+      <section className="mb-20 md:mb-24">
+        <SectionLabel>Background</SectionLabel>
+
+        <div className="mt-10 space-y-8">
+          <Item
+            title="Wesleyan University"
+            meta="2023 — 2027 · Middletown, CT"
+            body="B.A. Economics, Minor in Data Analysis. CGPA 3.7. Inaugural cohort of the Wesleyan African Scholars program."
+          />
+          <Item
+            title="Dartmouth Tuck School of Business Bridge"
+            meta="January 2026 · Hanover, NH"
+            body="Faculty-led MBA program in Finance, Accounting, Strategy, Leadership and Marketing. Pitched a $250B+ DCF valuation of Coca-Cola to a Goldman Sachs MD and a Bain Capital Partner."
+          />
+          <Item
+            title="African Leadership Academy"
+            meta="2021 — 2023 · Johannesburg, South Africa"
+            body="Africa’s premier boarding school. Valedictorian. Best Student in Economics. Highest national mark in High School Theatre coursework (97%). 10/10 A*s in IGCSE."
+          />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* PRIOR WORK */}
+      <section className="mb-20 md:mb-24">
+        <SectionLabel>Earlier</SectionLabel>
+        <div className="mt-10 space-y-8">
+          <Item
+            title="Patricelli Center for Entrepreneurship"
+            meta="2024 — Now · Social Impact Fellow"
+            body="Pitched to the Irish UN Ambassador and CNN’s former president. Won $1,200 in grant funding for the first stages of the Sabi Lagos pilot."
+          />
+          <Item
+            title="Wesleyan ITS — Help Desk Technician"
+            meta="2025 — Now"
+            body="Frontline IT for the university. 20+ tickets weekly at 85% first-contact resolution; 400 faculty and staff supported across macOS and Windows."
+          />
+          <Item
+            title="Wes_Code Club — Executive Board"
+            meta="2025 — Now"
+            body="Organized 8 events, raised $2,000+ for members to attend hackathons, grew participation 30%."
+          />
+          <Item
+            title="Model African Union Conference"
+            meta="2022 — 2023 · Director of Logistics"
+            body="Ran the $100K+ budget and logistics for a 200-delegate Pan-African diplomacy summit spanning 30 countries. Executed three investment pitches that raised ~$10K and grew scholarship recipients 30-fold."
+          />
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* CONTACT */}
+      <section>
+        <SectionLabel>Contact</SectionLabel>
+        <p className="mt-10 text-[15px] leading-relaxed">
+          For Sabi, collaboration, or anything else — write to{" "}
+          <Link
+            href={`mailto:${EMAIL}`}
+            className="border-b border-[var(--color-rule)] hover:border-[var(--color-accent)]"
+          >
+            {EMAIL}
+          </Link>
+          .
+        </p>
+      </section>
+
+      <footer className="mt-24 border-t border-[var(--color-rule)] pt-6 text-xs text-[var(--color-muted)]">
+        © {new Date().getFullYear()} Naomi Ivie
+      </footer>
+    </main>
+  );
+}
+
+function SectionLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <h3 className="text-xs uppercase tracking-[0.2em] text-[var(--color-muted)]">
+      {children}
+    </h3>
+  );
+}
+
+function Honor({ year, body }: { year: string; body: string }) {
+  return (
+    <li className="flex gap-5 sm:gap-8">
+      <span className="w-12 shrink-0 text-xs uppercase tracking-widest text-[var(--color-muted)] sm:pt-0.5">
+        {year}
+      </span>
+      <span className="text-[var(--color-ink)]">{body}</span>
+    </li>
+  );
+}
+
+function Item({
+  title,
+  meta,
+  body,
+}: {
+  title: string;
+  meta: string;
+  body: string;
+}) {
+  return (
+    <article>
+      <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
+        <h3 className="font-serif text-xl tracking-tight">{title}</h3>
+        <span className="text-xs uppercase tracking-widest text-[var(--color-muted)]">
+          {meta}
+        </span>
+      </div>
+      <p className="mt-2 text-[15px] leading-relaxed text-[var(--color-ink)]">
+        {body}
+      </p>
+    </article>
   );
 }
