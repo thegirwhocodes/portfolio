@@ -103,6 +103,70 @@ export default function Home() {
 
         <article className="mt-12">
           <div className="flex items-baseline justify-between gap-4">
+            <h2 className="font-serif text-2xl tracking-tight">Class on Time</h2>
+            <span className="text-xs uppercase tracking-widest text-[var(--color-muted)]">
+              2026 — Now
+            </span>
+          </div>
+          <p className="mt-3 text-[15px] leading-relaxed text-[var(--color-ink)]">
+            An iOS commitment device that charges me $100 every time I’m late
+            to class. It reads my Google Calendar, computes a walking ETA
+            from where I am, sends a “leave now” push thirty minutes before
+            each event, and a Stripe charge fires the moment I miss the
+            geofence. Removing a payment method takes seven days — the
+            anti-escape mechanism is the entire point. Voice rollcall every
+            morning, Whisper + Claude intent classification, Mapbox routing,
+            Africa-on-Wesleyan-campus venue dictionary.
+          </p>
+          <p className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-sm">
+            <Link
+              href="https://go-place.vercel.app"
+              target="_blank"
+              rel="noopener"
+              className="border-b border-[var(--color-rule)] hover:border-[var(--color-accent)]"
+            >
+              go-place.vercel.app ↗
+            </Link>
+          </p>
+        </article>
+
+        <article className="mt-12">
+          <div className="flex items-baseline justify-between gap-4">
+            <h2 className="font-serif text-2xl tracking-tight">Cortex</h2>
+            <span className="text-xs uppercase tracking-widest text-[var(--color-muted)]">
+              2026 — Now
+            </span>
+          </div>
+          <p className="mt-3 text-[15px] leading-relaxed text-[var(--color-ink)]">
+            A personal AI agent that knows me. Cortex ingests my email,
+            calendar, messages, and notes, fine-tunes a per-user LoRA on
+            Qwen3-4B for roughly a dollar a retrain, and runs two surfaces:
+            a web dashboard that drafts emails in my voice, and a hands-free
+            voice-email loop that lets me triage my inbox by talking to it.
+            Built because general-purpose chatbots forget who you are between
+            sessions.
+          </p>
+        </article>
+
+        <article className="mt-12">
+          <div className="flex items-baseline justify-between gap-4">
+            <h2 className="font-serif text-2xl tracking-tight">Bethel</h2>
+            <span className="text-xs uppercase tracking-widest text-[var(--color-muted)]">
+              2026 — Now
+            </span>
+          </div>
+          <p className="mt-3 text-[15px] leading-relaxed text-[var(--color-ink)]">
+            A native iOS app for Bible reading and dream journaling, written
+            in Swift. The AI is a four-layer pipeline — personal RAG over
+            your journal, a fine-tuned Phi-3.5 adapter, the entire NKJV
+            embedded in pgvector, and Claude Haiku as the reasoning fallback.
+            Gold on warm dark; Satoshi for display, Literata for scripture.
+            Designed to feel like opening a leather journal by candlelight.
+          </p>
+        </article>
+
+        <article className="mt-12">
+          <div className="flex items-baseline justify-between gap-4">
             <h2 className="font-serif text-2xl tracking-tight">Adjutant</h2>
             <span className="text-xs uppercase tracking-widest text-[var(--color-muted)]">
               SCSP 2026
@@ -113,8 +177,10 @@ export default function Home() {
             U.S. service members buried in paperwork. A junior NCO talks to
             it the way they’d talk to their S1 — and gets back a
             regulation-cited answer plus a populated DA-31 PDF. Same flow
-            for travel vouchers and counseling. Runs locally on an 8 GB
-            laptop. Submitted to the SCSP Hackathon GenAI.mil track.
+            for travel vouchers and counseling. 271K chunks across 933 Army
+            regulations in a local FAISS index; Whisper, Llama 3.2, and
+            Kokoro 82M all run on the laptop. Submitted to the SCSP
+            Hackathon GenAI.mil track.
           </p>
         </article>
 
@@ -129,8 +195,8 @@ export default function Home() {
           </div>
           <p className="mt-3 text-[15px] leading-relaxed text-[var(--color-ink)]">
             A model that recognizes American Sign Language and converts it
-            to spoken language in real time. Built in a weekend, won first
-            place.
+            to spoken language in real time. Built on the WLASL dataset over
+            a weekend. First place.
           </p>
         </article>
       </section>
