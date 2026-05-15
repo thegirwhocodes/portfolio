@@ -116,7 +116,7 @@ export default function Home() {
             geofence. Removing a payment method takes seven days — the
             anti-escape mechanism is the entire point. Voice rollcall every
             morning, Whisper + Claude intent classification, Mapbox routing,
-            Africa-on-Wesleyan-campus venue dictionary.
+            Wesleyan-campus venue dictionary.
           </p>
           <p className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-sm">
             <Link
@@ -145,6 +145,24 @@ export default function Home() {
             voice-email loop that lets me triage my inbox by talking to it.
             Built because general-purpose chatbots forget who you are between
             sessions.
+          </p>
+          <p className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-sm">
+            <Link
+              href="https://cortex-web-one.vercel.app"
+              target="_blank"
+              rel="noopener"
+              className="border-b border-[var(--color-rule)] hover:border-[var(--color-accent)]"
+            >
+              cortex-web-one.vercel.app ↗
+            </Link>
+            <Link
+              href="https://voice-email-app.vercel.app"
+              target="_blank"
+              rel="noopener"
+              className="border-b border-[var(--color-rule)] hover:border-[var(--color-accent)]"
+            >
+              voice-email-app.vercel.app ↗
+            </Link>
           </p>
         </article>
 
@@ -182,6 +200,16 @@ export default function Home() {
             Kokoro 82M all run on the laptop. Submitted to the SCSP
             Hackathon GenAI.mil track.
           </p>
+          <p className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-sm">
+            <Link
+              href="https://github.com/thegirwhocodes/adjutant"
+              target="_blank"
+              rel="noopener"
+              className="border-b border-[var(--color-rule)] hover:border-[var(--color-accent)]"
+            >
+              github.com/thegirwhocodes/adjutant ↗
+            </Link>
+          </p>
         </article>
 
         <article className="mt-12">
@@ -198,6 +226,7 @@ export default function Home() {
             to spoken language in real time. Built on the WLASL dataset over
             a weekend. First place.
           </p>
+          {/* TODO(Naomi): paste your Devpost URL here */}
         </article>
       </section>
 
