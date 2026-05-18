@@ -226,7 +226,16 @@ export default function Home() {
             to spoken language in real time. Built on the WLASL dataset over
             a weekend. First place.
           </p>
-          {/* TODO(Naomi): paste your Devpost URL here */}
+          <p className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-sm">
+            <Link
+              href="https://devpost.com/software/dactyl"
+              target="_blank"
+              rel="noopener"
+              className="border-b border-[var(--color-rule)] hover:border-[var(--color-accent)]"
+            >
+              devpost.com/software/dactyl ↗
+            </Link>
+          </p>
         </article>
       </section>
 
