@@ -177,16 +177,18 @@ export default function Home() {
             </span>
           </div>
           <p className="mt-3 text-[15px] leading-relaxed text-[var(--color-ink)]">
-            Real-time bidirectional ASL translation glasses — a deaf person
-            signs, the hearing person hears it spoken aloud; the hearing
-            person speaks, the deaf person reads live captions. Two-way, no
-            interpreter. We hand-recorded over four hundred ASL sign videos
-            to build our own training dataset from scratch. MediaPipe
-            Holistic tracks five hundred forty-three keypoints across hands,
-            face, and body every frame; a custom LSTM classifies signs from
-            temporal sequences at ninety-nine percent accuracy. Groq running
-            Llama 3.3 70B converts ASL gloss into natural English in around
-            fifty milliseconds; Edge TTS speaks it back with pre-cached
+            Real-time bidirectional ASL translation glasses, built with my
+            partner Tomisin. A deaf person signs, the hearing person hears
+            it spoken aloud; the hearing person speaks, the deaf person
+            reads live captions. Two-way, no interpreter. We hand-recorded
+            over four hundred ASL sign videos to build our own training
+            dataset from scratch. MediaPipe Holistic tracks five hundred
+            forty-three keypoints across hands, face, and body every frame;
+            a custom TensorFlow LSTM classifies signs from temporal
+            sequences at ninety-nine percent accuracy on a twelve-sign
+            vocabulary. Groq running Llama 3.3 70B converts ASL gloss into
+            natural English in around fifty milliseconds; Edge TTS speaks
+            it back in a Nigerian English neural voice with pre-cached
             audio in under ten; Whisper runs locally for the reverse
             direction so nothing leaves the device. Round-trip under a
             second, streamed to the glasses over Flask and SocketIO.
