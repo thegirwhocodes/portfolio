@@ -171,7 +171,7 @@ export default function Home() {
           <div className="flex items-baseline justify-between gap-4">
             <h2 className="font-serif text-2xl tracking-tight">Rings</h2>
             <span className="text-xs uppercase tracking-widest text-[var(--color-muted)]">
-              2025 — Now
+              Jan 2025 — Now · v2.1
             </span>
           </div>
           <p className="mt-3 text-[15px] leading-relaxed text-[var(--color-ink)]">
@@ -179,8 +179,8 @@ export default function Home() {
             relationships, built on Dunbar’s circles — the inner three every
             two weeks, the next twelve every six weeks, then thirty, fifty,
             one hundred, two hundred, each on a calibrated cadence. Started
-            as a Python tkinter prototype, now a multi-platform Swift app on
-            iPhone and Mac with CloudKit sync.
+            as a Python tkinter prototype; currently on Version 2.1 — a
+            multi-device Swift app for iPhone and Mac with CloudKit sync.
           </p>
         </article>
 
