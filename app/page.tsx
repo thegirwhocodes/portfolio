@@ -233,16 +233,26 @@ export default function Home() {
         <article className="mt-12">
           <div className="flex items-baseline justify-between gap-4">
             <h2 className="font-serif text-2xl tracking-tight">
-              Morgan Hacks — ASL to Speech
+              Dactyl
             </h2>
             <span className="text-xs uppercase tracking-widest text-[var(--color-muted)]">
-              2026 · 1st place
+              Morgan Hacks 2026 · 1st place
             </span>
           </div>
           <p className="mt-3 text-[15px] leading-relaxed text-[var(--color-ink)]">
-            A model that recognizes American Sign Language and converts it
-            to spoken language in real time. Built on the WLASL dataset over
-            a weekend. First place.
+            Real-time bidirectional ASL translation glasses — a deaf person
+            signs, the hearing person hears it spoken aloud; the hearing
+            person speaks, the deaf person reads live captions. Two-way, no
+            interpreter. We hand-recorded over four hundred ASL sign videos
+            to build our own training dataset from scratch. MediaPipe
+            Holistic tracks five hundred forty-three keypoints across hands,
+            face, and body every frame; a custom LSTM classifies signs from
+            temporal sequences at ninety-nine percent accuracy. Groq running
+            Llama 3.3 70B converts ASL gloss into natural English in around
+            fifty milliseconds; Edge TTS speaks it back with pre-cached
+            audio in under ten; Whisper runs locally for the reverse
+            direction so nothing leaves the device. Round-trip under a
+            second, streamed to the glasses over Flask and SocketIO.
           </p>
           <p className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-sm">
             <Link
