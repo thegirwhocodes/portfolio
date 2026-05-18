@@ -103,20 +103,21 @@ export default function Home() {
 
         <article className="mt-12">
           <div className="flex items-baseline justify-between gap-4">
-            <h2 className="font-serif text-2xl tracking-tight">Class on Time</h2>
+            <h2 className="font-serif text-2xl tracking-tight">Go</h2>
             <span className="text-xs uppercase tracking-widest text-[var(--color-muted)]">
-              2026 — Now
+              2026 · Private alpha
             </span>
           </div>
           <p className="mt-3 text-[15px] leading-relaxed text-[var(--color-ink)]">
-            An iOS commitment device that charges me $100 every time I’m late
-            to class. It reads my Google Calendar, computes a walking ETA
-            from where I am, sends a “leave now” push thirty minutes before
-            each event, and a Stripe charge fires the moment I miss the
-            geofence. Removing a payment method takes seven days — the
-            anti-escape mechanism is the entire point. Voice rollcall every
-            morning, Whisper + Claude intent classification, Mapbox routing,
-            Wesleyan-campus venue dictionary.
+            An iOS commitment device — when it ships, it charges me $100
+            every time I’m late to class. It reads my Google Calendar,
+            computes a walking ETA from where I am via Mapbox, sends a
+            “leave now” push thirty minutes before each event, and a Stripe
+            charge fires the moment I miss the geofence. Removing a payment
+            method takes seven days — the anti-escape mechanism is the
+            entire point. Voice rollcall every morning with Whisper + a
+            Claude intent classifier. Marketing site live; the app is on an
+            iOS dev client, in private alpha.
           </p>
           <p className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-sm">
             <Link
@@ -163,6 +164,23 @@ export default function Home() {
             >
               voice-email-app.vercel.app ↗
             </Link>
+          </p>
+        </article>
+
+        <article className="mt-12">
+          <div className="flex items-baseline justify-between gap-4">
+            <h2 className="font-serif text-2xl tracking-tight">Rings</h2>
+            <span className="text-xs uppercase tracking-widest text-[var(--color-muted)]">
+              2025 — Now
+            </span>
+          </div>
+          <p className="mt-3 text-[15px] leading-relaxed text-[var(--color-ink)]">
+            A personal CRM that reminds me to maintain my closest
+            relationships, built on Dunbar’s circles — the inner three every
+            two weeks, the next twelve every six weeks, then thirty, fifty,
+            one hundred, two hundred, each on a calibrated cadence. Started
+            as a Python tkinter prototype, now a multi-platform Swift app on
+            iPhone and Mac with CloudKit sync.
           </p>
         </article>
 
