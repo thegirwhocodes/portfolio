@@ -98,6 +98,14 @@ export default function Home() {
             >
               eduforequality.org ↗
             </Link>
+            <Link
+              href="https://youtu.be/KUGy9RsFXzA"
+              target="_blank"
+              rel="noopener"
+              className="border-b border-[var(--color-rule)] hover:border-[var(--color-accent)]"
+            >
+              Watch the demo ↗
+            </Link>
           </p>
         </article>
 
