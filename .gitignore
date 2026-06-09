@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# VoiceMode per-project voice (local, not shared)
+.voicemode.env
