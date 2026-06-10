@@ -165,8 +165,41 @@ button:focus-visible {
   background:
     linear-gradient(90deg, rgba(18, 20, 23, 0.06) 1px, transparent 1px),
     linear-gradient(0deg, rgba(18, 20, 23, 0.06) 1px, transparent 1px),
-    #f8faf9;
+    #f9f7f0;
   background-size: 34px 34px;
+}
+
+.go-map {
+  position: absolute;
+  inset: 0;
+}
+
+.go-block {
+  position: absolute;
+  border-radius: 8px;
+  background: rgba(214, 144, 45, 0.15);
+  border: 1px solid rgba(214, 144, 45, 0.22);
+}
+
+.go-block.block-a {
+  left: 7%;
+  top: 12%;
+  width: 28%;
+  height: 30%;
+}
+
+.go-block.block-b {
+  right: 8%;
+  top: 10%;
+  width: 34%;
+  height: 24%;
+}
+
+.go-block.block-c {
+  right: 14%;
+  bottom: 9%;
+  width: 24%;
+  height: 30%;
 }
 
 .route-dot {
@@ -179,155 +212,277 @@ button:focus-visible {
 }
 
 .route-dot.start {
-  left: 18%;
-  top: 64%;
+  left: 16%;
+  top: 70%;
 }
 
 .route-dot.end {
-  right: 18%;
-  top: 26%;
+  right: 20%;
+  top: 28%;
 }
 
 .route-line {
   position: absolute;
-  left: 22%;
-  top: 34%;
-  width: 58%;
-  height: 42%;
+  left: 21%;
+  top: 36%;
+  width: 56%;
+  height: 40%;
   border-top: 3px solid var(--project-accent);
   border-right: 3px solid var(--project-accent);
   border-radius: 0 42px 0 0;
-  transform: skewY(-14deg);
+  transform: skewY(-15deg);
+}
+
+.go-eta {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  border-radius: 8px;
+  background: rgba(18, 20, 23, 0.9);
+  padding: 0.9rem;
+  color: #fff8eb;
+  box-shadow: 0 18px 50px rgba(18, 20, 23, 0.18);
+}
+
+.go-eta span,
+.dactyl-readout span,
+.cortex-panel span,
+.rings-calendar span,
+.rings-message span,
+.bethel-study span,
+.adjutant-shell > span {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: currentColor;
+  opacity: 0.58;
+}
+
+.go-eta strong,
+.dactyl-readout strong,
+.cortex-panel strong,
+.rings-calendar strong,
+.bethel-study strong,
+.adjutant-shell strong {
+  display: block;
+  margin-top: 0.25rem;
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.go-eta p,
+.dactyl-readout p,
+.cortex-panel p,
+.rings-message p,
+.bethel-study p,
+.adjutant-shell p {
+  margin-top: 0.5rem;
+  font-size: 0.78rem;
+  line-height: 1.55;
 }
 
 .visual-cortex {
-  display: grid;
-  place-items: center;
-  background: #111116;
+  background:
+    radial-gradient(circle at 50% 22%, rgba(106, 91, 215, 0.55), transparent 34%),
+    #0e0e14;
+  color: #f5f2ff;
 }
 
-.voice-ring {
+.cortex-orb {
+  position: absolute;
+  left: 50%;
+  top: 14%;
   width: 7rem;
   height: 7rem;
+  border: 1px solid rgba(255, 255, 255, 0.26);
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.22);
   box-shadow:
-    0 0 0 24px rgba(106, 91, 215, 0.11),
-    0 0 70px rgba(106, 91, 215, 0.28);
+    0 0 0 22px rgba(106, 91, 215, 0.1),
+    0 0 80px rgba(106, 91, 215, 0.42);
+  transform: translateX(-50%);
 }
 
-.mail-lines {
+.cortex-panel {
   position: absolute;
-  left: 1.25rem;
-  bottom: 1.25rem;
-  display: grid;
-  gap: 0.45rem;
-  width: 48%;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.07);
+  padding: 1rem;
+  backdrop-filter: blur(16px);
 }
 
-.mail-lines span {
-  height: 0.5rem;
+.cortex-queue {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  max-width: 85%;
+}
+
+.cortex-queue span {
+  border: 1px solid rgba(255, 255, 255, 0.13);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.mail-lines span:nth-child(2) {
-  width: 82%;
-}
-
-.mail-lines span:nth-child(3) {
-  width: 55%;
+  background: rgba(255, 255, 255, 0.07);
+  padding: 0.35rem 0.55rem;
+  font-size: 0.68rem;
+  color: rgba(245, 242, 255, 0.72);
 }
 
 .visual-dactyl {
-  background: #eef6fb;
+  background: linear-gradient(135deg, #edf8ff, #dceef9);
+  color: #103552;
 }
 
-.visual-dactyl i {
+.dactyl-camera {
   position: absolute;
-  width: 0.62rem;
-  height: 0.62rem;
+  left: 1rem;
+  top: 1rem;
+  width: 48%;
+  height: calc(100% - 2rem);
+  border: 1px solid rgba(47, 115, 183, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.64);
+}
+
+.dactyl-camera i {
+  position: absolute;
+  width: 0.58rem;
+  height: 0.58rem;
   border-radius: 999px;
   background: var(--project-accent);
   box-shadow: 0 0 0 5px rgba(47, 115, 183, 0.1);
 }
 
-.visual-rings {
-  display: grid;
-  place-items: center;
-  background: #f2f8f4;
+.dactyl-readout {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  bottom: 1rem;
+  width: calc(52% - 2rem);
+  border-radius: 8px;
+  background: #102f49;
+  padding: 1rem;
+  color: #eef8ff;
 }
 
-.visual-rings span {
+.visual-rings {
+  background: linear-gradient(135deg, #eff8f1, #dceee3);
+  color: #173f2c;
+}
+
+.rings-calendar,
+.rings-message {
   position: absolute;
-  display: grid;
-  place-items: center;
-  border: 1px solid color-mix(in srgb, var(--project-accent) 44%, transparent);
+  left: 1rem;
+  right: 1rem;
+  border: 1px solid rgba(60, 129, 95, 0.18);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.76);
+  padding: 0.85rem;
+  box-shadow: 0 18px 45px rgba(23, 63, 44, 0.08);
+}
+
+.rings-calendar {
+  top: 1rem;
+}
+
+.rings-message {
+  top: 6.4rem;
+}
+
+.rings-message.secondary {
+  top: auto;
+  bottom: 1rem;
+  opacity: 0.82;
+}
+
+.rings-message b {
+  display: inline-block;
+  margin-top: 0.45rem;
   border-radius: 999px;
-  font-family: var(--font-serif);
-  color: var(--project-accent);
+  background: rgba(60, 129, 95, 0.12);
+  padding: 0.25rem 0.5rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #2b6548;
 }
 
 .visual-bethel {
-  display: grid;
-  place-items: center;
-  background: #17110d;
-}
-
-.phone-frame {
-  width: 11.5rem;
-  height: 13rem;
-  border-radius: 28px;
-  border: 1px solid rgba(246, 218, 153, 0.28);
-  background: linear-gradient(180deg, rgba(246, 218, 153, 0.1), rgba(246, 218, 153, 0.02));
-  padding: 1.25rem;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(246, 218, 153, 0.18), transparent 36%),
+    #17110d;
   color: #f5e4bd;
+  height: 318px;
 }
 
-.phone-frame span,
-.phone-frame em {
+.bethel-study {
+  position: absolute;
+  inset: 1rem;
+  display: grid;
+  align-content: start;
+  gap: 0.65rem;
+  border: 1px solid rgba(246, 218, 153, 0.22);
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(246, 218, 153, 0.1), rgba(246, 218, 153, 0.02));
+  padding: 1rem;
+}
+
+.bethel-study strong {
+  margin-bottom: 0.25rem;
+}
+
+.bethel-study div {
+  border-top: 1px solid rgba(246, 218, 153, 0.16);
+  padding-top: 0.55rem;
+}
+
+.bethel-study b {
   display: block;
-  font-size: 0.78rem;
-  color: rgba(245, 228, 189, 0.64);
-}
-
-.phone-frame strong {
-  display: block;
-  margin-top: 1.75rem;
-  font-family: var(--font-serif);
-  font-size: 1.55rem;
-  font-weight: 400;
-}
-
-.phone-frame em {
-  margin-top: 0.75rem;
-  font-style: normal;
-  line-height: 1.55;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: rgba(245, 228, 189, 0.7);
 }
 
 .visual-adjutant {
-  display: grid;
-  gap: 0.45rem;
-  padding: 0.9rem;
   background: #edf1f3;
+  color: #23303a;
 }
 
-.visual-adjutant div {
+.adjutant-shell {
+  position: absolute;
+  inset: 1rem;
+  display: grid;
+  gap: 0.45rem;
+  border: 1px solid rgba(75, 89, 103, 0.18);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.72);
+  padding: 1rem;
+}
+
+.adjutant-shell div {
   display: grid;
   grid-template-columns: 4.25rem 1fr;
   align-items: center;
   gap: 0.75rem;
-  border: 1px solid rgba(75, 89, 103, 0.18);
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.64);
-  padding: 0.5rem;
-  font-size: 0.68rem;
-  text-transform: uppercase;
-  letter-spacing: 0;
-  color: rgba(18, 20, 23, 0.54);
+  font-size: 0.7rem;
+  color: rgba(18, 20, 23, 0.58);
 }
 
-.visual-adjutant b {
+.adjutant-shell div span {
+  text-transform: uppercase;
+}
+
+.adjutant-shell b {
   display: block;
   height: 0.6rem;
   border-radius: 999px;
@@ -353,4 +508,5 @@ button:focus-visible {
   .project-card {
     min-height: auto;
   }
+
 }

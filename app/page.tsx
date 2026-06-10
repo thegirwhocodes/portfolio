@@ -13,12 +13,20 @@ const metrics = [
 
 const projects = [
   {
-    name: "Go",
-    meta: "2026 · Private alpha",
-    accent: "amber",
+    name: "Dactyl",
+    meta: "Morgan Hacks 2026 · 1st place",
+    accent: "blue",
     body:
-      "An iOS commitment device: when it ships, it charges me $100 every time I'm late to class. It reads my Google Calendar, computes a walking ETA with Mapbox, sends a leave-now push, and fires a Stripe charge the moment I miss the geofence. Removing a payment method takes seven days; the anti-escape mechanism is the product.",
-    links: [{ label: "Live site", href: "https://go-place.vercel.app" }],
+      "Real-time bidirectional ASL translation glasses, built with Tomisin. We hand-recorded 400+ ASL sign videos, trained a TensorFlow LSTM on MediaPipe Holistic temporal keypoints, and wired Groq, Edge TTS, local Whisper, Flask, and SocketIO into a sub-one-second sign-to-speech and speech-to-caption loop.",
+    links: [{ label: "Devpost", href: "https://devpost.com/software/dactyl" }],
+  },
+  {
+    name: "Bethel",
+    meta: "2026 — Now",
+    accent: "gold",
+    body:
+      "A native Swift iOS app for Bible reading, dream journaling, and guided study. The AI pipeline layers personal RAG over your journal, a Phi-3.5 adapter, NKJV embeddings in pgvector, and Claude Haiku as the reasoning fallback. It is intentionally quiet: gold on warm dark, Literata for scripture, no religious clip-art.",
+    links: [],
   },
   {
     name: "Cortex",
@@ -32,36 +40,28 @@ const projects = [
     ],
   },
   {
-    name: "Dactyl",
-    meta: "Morgan Hacks 2026 · 1st place",
-    accent: "blue",
+    name: "Go",
+    meta: "2026 · Private alpha",
+    accent: "amber",
     body:
-      "Real-time bidirectional ASL translation glasses, built with Tomisin. We hand-recorded 400+ ASL sign videos, trained a TensorFlow LSTM on MediaPipe Holistic temporal keypoints, and wired Groq, Edge TTS, local Whisper, Flask, and SocketIO into a sub-one-second sign-to-speech and speech-to-caption loop.",
-    links: [{ label: "Devpost", href: "https://devpost.com/software/dactyl" }],
+      "An iOS commitment device: when it ships, it charges me $100 every time I'm late to class. It reads my Google Calendar, computes a walking ETA with Mapbox, sends a leave-now push, and fires a Stripe charge the moment I miss the geofence. Removing a payment method takes seven days; the anti-escape mechanism is the product.",
+    links: [{ label: "Live site", href: "https://go-place.vercel.app" }],
   },
   {
     name: "Rings",
     meta: "Jan 2025 — Now · v2.1",
     accent: "green",
     body:
-      "A personal CRM for relationship maintenance. Rings is built on Dunbar's circles: the inner three every two weeks, the next twelve every six weeks, then thirty, fifty, one hundred, two hundred on calibrated cadences. It started as a Python tkinter prototype and is now a multi-device Swift app for iPhone and Mac with CloudKit sync.",
-    links: [],
-  },
-  {
-    name: "Bethel",
-    meta: "2026 — Now",
-    accent: "gold",
-    body:
-      "A native Swift iOS app for Bible reading and dream journaling. The AI pipeline layers personal RAG over your journal, a Phi-3.5 adapter, NKJV embeddings in pgvector, and Claude Haiku as the reasoning fallback. It is intentionally quiet: gold on warm dark, Literata for scripture, no religious clip-art.",
+      "A personal CRM for relationship maintenance, currently a multi-device Swift app for iPhone and Mac with CloudKit sync. The rework is more agentic: calendar-aware, plugged into relationship surfaces, and able to draft or send warm check-ins when I am dropping the ball.",
     links: [],
   },
   {
     name: "Adjutant",
-    meta: "SCSP 2026",
+    meta: "SCSP 2026 · prototype",
     accent: "slate",
     body:
-      "Voice-first, fully offline AI assistant for Army paperwork. A junior NCO talks to it like they would talk to S1 and gets back a regulation-cited answer plus a populated DA-31 PDF. 271K chunks across 933 Army regulations in local FAISS; Whisper, Llama 3.2, and Kokoro 82M all run on the laptop.",
-    links: [{ label: "GitHub", href: "https://github.com/thegirwhocodes/adjutant" }],
+      "A voice-first offline prototype for Army paperwork. A junior NCO talks to it like they would talk to S1 and gets back a regulation-cited answer plus a populated DA-31 PDF. It is less finished than the others, but the local RAG idea is strong: 271K chunks across 933 Army regulations in FAISS with Whisper, Llama 3.2, and Kokoro running on-device.",
+    links: [],
   },
 ];
 
@@ -150,7 +150,7 @@ export default function Home() {
         <SectionIntro
           eyebrow="Selected work"
           title="Products first, prizes second."
-          body="The projects below are not coursework dressed up as a portfolio. They are small operating systems: voice agents, iOS apps, payment flows, GPU inference, local RAG, and hackathon hardware that had to work in front of people."
+          body="Each panel is a small product surface, not a screenshot. The point is to let someone feel the app immediately: the route Go is timing, the Bible study Bethel is assembling, the relationship check-in Rings is sending, the voice agent Cortex is becoming."
         />
 
         <article className="mt-12 grid overflow-hidden rounded-[8px] border border-[var(--color-rule)] bg-white lg:grid-cols-[minmax(0,1fr)_390px]">
@@ -398,10 +398,19 @@ function ProjectVisual({ name }: { name: string }) {
   if (name === "Go") {
     return (
       <div className="visual visual-go">
-        <div className="route-dot start" />
-        <div className="route-line" />
-        <div className="route-dot end" />
-        <div className="visual-chip">Leave by 3:18 · $100 armed</div>
+        <div className="go-map" aria-hidden="true">
+          <span className="go-block block-a" />
+          <span className="go-block block-b" />
+          <span className="go-block block-c" />
+          <div className="route-line" />
+          <div className="route-dot start" />
+          <div className="route-dot end" />
+        </div>
+        <div className="go-eta">
+          <span>Current class</span>
+          <strong>40 min away</strong>
+          <p>Leave by 2:18 PM. Stripe charge armed if the geofence misses.</p>
+        </div>
       </div>
     );
   }
@@ -409,11 +418,16 @@ function ProjectVisual({ name }: { name: string }) {
   if (name === "Cortex") {
     return (
       <div className="visual visual-cortex">
-        <div className="voice-ring" />
-        <div className="mail-lines">
-          <span />
-          <span />
-          <span />
+        <div className="cortex-orb" aria-hidden="true" />
+        <div className="cortex-panel">
+          <span>Cortex voice</span>
+          <strong>Hello Naomi, here is what is on your plate today.</strong>
+          <p>Sabi grant reply, two unread founder emails, Econ reading before 4.</p>
+        </div>
+        <div className="cortex-queue">
+          <span>Sabi board note</span>
+          <span>Reply drafted</span>
+          <span>Calendar conflict</span>
         </div>
       </div>
     );
@@ -422,10 +436,22 @@ function ProjectVisual({ name }: { name: string }) {
   if (name === "Dactyl") {
     return (
       <div className="visual visual-dactyl">
-        {Array.from({ length: 18 }).map((_, index) => (
-          <i key={index} style={{ left: `${12 + ((index * 23) % 76)}%`, top: `${16 + ((index * 31) % 68)}%` }} />
-        ))}
-        <div className="visual-chip">ASL → speech · &lt;1s</div>
+        <div className="dactyl-camera" aria-hidden="true">
+          {Array.from({ length: 24 }).map((_, index) => (
+            <i
+              key={index}
+              style={{
+                left: `${12 + ((index * 19) % 72)}%`,
+                top: `${18 + ((index * 29) % 60)}%`,
+              }}
+            />
+          ))}
+        </div>
+        <div className="dactyl-readout">
+          <span>MediaPipe gloss</span>
+          <strong>THANK YOU</strong>
+          <p>Groq rewrites the ASL gloss into natural English, then Edge TTS speaks it.</p>
+        </div>
       </div>
     );
   }
@@ -433,11 +459,20 @@ function ProjectVisual({ name }: { name: string }) {
   if (name === "Rings") {
     return (
       <div className="visual visual-rings">
-        {[3, 12, 30, 50, 100, 200].map((ring, index) => (
-          <span key={ring} style={{ width: `${34 + index * 20}px`, height: `${34 + index * 20}px` }}>
-            {index === 0 ? ring : null}
-          </span>
-        ))}
+        <div className="rings-calendar">
+          <span>Busy week</span>
+          <strong>2 people need warmth today</strong>
+        </div>
+        <div className="rings-message">
+          <span>To Tomi</span>
+          <p>Thinking of you today. How did the interview go?</p>
+          <b>sent by Rings</b>
+        </div>
+        <div className="rings-message secondary">
+          <span>To Mom</span>
+          <p>Can I call after dinner?</p>
+          <b>queued</b>
+        </div>
       </div>
     );
   }
@@ -445,10 +480,17 @@ function ProjectVisual({ name }: { name: string }) {
   if (name === "Bethel") {
     return (
       <div className="visual visual-bethel">
-        <div className="phone-frame">
-          <span>Good evening</span>
-          <strong>Isaiah 40:29</strong>
-          <em>He gives power to the faint.</em>
+        <div className="bethel-study">
+          <span>Ask Bethel</span>
+          <strong>What does the Bible say about fear?</strong>
+          <div>
+            <b>Old Testament</b>
+            <p>Psalm 56:3 starts with trust before certainty.</p>
+          </div>
+          <div>
+            <b>New Testament</b>
+            <p>2 Timothy 1:7 frames courage as something received.</p>
+          </div>
         </div>
       </div>
     );
@@ -456,12 +498,17 @@ function ProjectVisual({ name }: { name: string }) {
 
   return (
     <div className="visual visual-adjutant">
-      {["Name", "Rank", "Unit", "Dates", "Citation"].map((field) => (
-        <div key={field}>
-          <span>{field}</span>
-          <b />
-        </div>
-      ))}
+      <div className="adjutant-shell">
+        <span>Prototype</span>
+        <strong>DA-31 leave packet</strong>
+        {["Soldier", "Unit", "Dates", "POC"].map((field) => (
+          <div key={field}>
+            <span>{field}</span>
+            <b />
+          </div>
+        ))}
+        <p>AR 600-8-10 cited locally from FAISS.</p>
+      </div>
     </div>
   );
 }
