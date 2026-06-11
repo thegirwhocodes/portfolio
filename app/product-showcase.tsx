@@ -4,21 +4,6 @@ import Link from "next/link";
 import type { FormEvent, ReactNode } from "react";
 import { useMemo, useState } from "react";
 
-const sabiLessons = {
-  mat: {
-    word: "mat",
-    prompt: "Aunty, I cannot read this word.",
-    tutor: "No wahala. Listen: /m/ /a/ /t/. Blend it slowly.",
-    answer: "Mat.",
-  },
-  sun: {
-    word: "sun",
-    prompt: "This one is hard.",
-    tutor: "Start with /s/, then /u/, then /n/. Push the sounds together.",
-    answer: "Sun.",
-  },
-};
-
 const dactylSigns = {
   thanks: {
     label: "Thank you",
@@ -61,7 +46,7 @@ const bethelStudies = {
   },
 };
 
-const cortexModes = {
+const sageModes = {
   today: {
     label: "Brief me",
     headline: "Hello Naomi, here is what is on your plate today.",
@@ -79,6 +64,39 @@ const cortexModes = {
     headline: "I can read the inbox one decision at a time.",
     detail: "Say archive, reply, or remind me tomorrow. The agent keeps the thread state.",
     tags: ["Listening", "Inbox", "Hands free"],
+  },
+};
+
+const kaiModes = {
+  focus: {
+    label: "Focus",
+    minutes: "34:00",
+    headline: "Start with the essay while the window is clean.",
+    detail: "Recent ratings are strong, so Kai lengthened the block instead of forcing a rigid 25 minutes.",
+  },
+  break: {
+    label: "Break",
+    minutes: "08:00",
+    headline: "Protect the break. You are not behind.",
+    detail: "The research is simple: recovery is part of the system, not an optional reward.",
+  },
+};
+
+const editModes = {
+  safe: {
+    label: "Safe",
+    headline: "Clean 20-second teaser",
+    detail: "Trimmed hook, normalized audio, captions preserved, exported for Instagram.",
+  },
+  stretch: {
+    label: "Stretch",
+    headline: "Faster social cut",
+    detail: "Added punchier pacing, alternate intro, and a saved memory about the creator's taste.",
+  },
+  wild: {
+    label: "Wild",
+    headline: "Three-version agent loop",
+    detail: "The agent renders Safe, Stretch, and Wild options, then remembers which one the user chooses.",
   },
 };
 
@@ -101,11 +119,12 @@ const goModes = {
   },
 };
 
-type SabiKey = keyof typeof sabiLessons;
 type DactylKey = keyof typeof dactylSigns;
 type BethelKey = keyof typeof bethelStudies;
-type CortexKey = keyof typeof cortexModes;
+type SageKey = keyof typeof sageModes;
 type GoKey = keyof typeof goModes;
+type KaiKey = keyof typeof kaiModes;
+type EditKey = keyof typeof editModes;
 type RingsState = "draft" | "sent" | "hold";
 
 export default function ProductShowcase() {
@@ -114,8 +133,10 @@ export default function ProductShowcase() {
       <SabiCard />
       <DactylCard />
       <BethelCard />
-      <CortexCard />
+      <SageCard />
       <GoCard />
+      <KaiCard />
+      <EditCard />
       <RingsCard />
       <AdjutantCard />
     </div>
@@ -123,9 +144,6 @@ export default function ProductShowcase() {
 }
 
 function SabiCard() {
-  const [lessonKey, setLessonKey] = useState<SabiKey>("mat");
-  const lesson = sabiLessons[lessonKey];
-
   return (
     <article className="product-card product-card--flagship vibe-sabi">
       <div className="product-copy">
@@ -142,8 +160,8 @@ function SabiCard() {
         </p>
         <div className="product-links">
           <Link href="/sabi">Read the Sabi page</Link>
-          <Link href="https://youtu.be/KUGy9RsFXzA" target="_blank" rel="noopener">
-            Watch demo
+          <Link href="https://sabi.eduforequality.org/demo" target="_blank" rel="noopener">
+            Open full demo
           </Link>
           <Link href="https://sabi.eduforequality.org" target="_blank" rel="noopener">
             Live site
@@ -152,31 +170,18 @@ function SabiCard() {
       </div>
 
       <div className="product-stage sabi-stage">
-        <div className="sabi-phone">
-          <div className="sabi-topline">
-            <span>Sabi call</span>
-            <b>03:42</b>
-          </div>
-          <CallLine speaker="Child" text={lesson.prompt} />
-          <CallLine speaker="Sabi" text={lesson.tutor} />
-          <CallLine speaker="Child" text={lesson.answer} />
-          <div className="sabi-sounds" aria-label={`Current word ${lesson.word}`}>
-            {lesson.word.split("").map((letter) => (
-              <span key={`${lesson.word}-${letter}`}>/{letter}/</span>
-            ))}
-          </div>
+        <div className="sabi-live-frame">
+          <iframe
+            allow="microphone; autoplay"
+            className="sabi-iframe"
+            loading="lazy"
+            src="https://sabi.eduforequality.org/demo"
+            title="Live Sabi voice demo"
+          />
         </div>
-        <div className="demo-controls" aria-label="Sabi lesson selector">
-          {Object.entries(sabiLessons).map(([key, item]) => (
-            <button
-              className={lessonKey === key ? "is-active" : ""}
-              key={key}
-              onClick={() => setLessonKey(key as SabiKey)}
-              type="button"
-            >
-              {item.word}
-            </button>
-          ))}
+        <div className="sabi-demo-note">
+          <span>Live demo</span>
+          <p>Enter a name, start the lesson, and the real Sabi voice agent runs inside the card.</p>
         </div>
       </div>
     </article>
@@ -190,7 +195,7 @@ function DactylCard() {
 
   return (
     <ProductCard
-      className="product-card--wide vibe-dactyl"
+      className="vibe-dactyl"
       eyebrow="Dactyl · Morgan Hacks 2026 · 1st place"
       title="Sign becomes speech in under a second."
       body="We hand-recorded 400+ ASL videos, trained a TensorFlow LSTM over MediaPipe Holistic keypoints, then streamed the loop through Flask and SocketIO for glasses."
@@ -246,7 +251,7 @@ function BethelCard() {
 
   return (
     <ProductCard
-      className="product-card--narrow product-card--drop vibe-bethel"
+      className="vibe-bethel"
       eyebrow="Bethel · native Swift"
       title="A study guide, not a chatbot answer."
       body="Bethel turns a spiritual question into a quiet guided study: Scripture, reflection, prayer, and memory surfaced from the user's journal."
@@ -275,10 +280,10 @@ function BethelCard() {
   );
 }
 
-function CortexCard() {
-  const [modeKey, setModeKey] = useState<CortexKey>("today");
+function SageCard() {
+  const [modeKey, setModeKey] = useState<SageKey>("today");
   const [speaking, setSpeaking] = useState(false);
-  const mode = cortexModes[modeKey];
+  const mode = sageModes[modeKey];
 
   function speak() {
     if (typeof window === "undefined" || !("speechSynthesis" in window)) {
@@ -295,13 +300,13 @@ function CortexCard() {
 
   return (
     <ProductCard
-      className="product-card--narrow vibe-cortex"
-      eyebrow="Cortex · personal agent"
-      title="A voice layer over the chaos."
-      body="Cortex ingests mail, calendar, notes, and messages, then turns the day into a sequence of decisions: brief, triage, draft, remind."
+      className="vibe-cortex"
+      eyebrow="Sage Mail · voice email agent"
+      title="An inbox you can clear with your voice."
+      body="Sage reads the important email first, drafts in the user's voice, and gates every consequential action behind approval. Cortex is the broader personal-AI system; Sage Mail is the shipped email surface."
       links={[
         { href: "https://cortex-web-one.vercel.app", label: "Cortex web" },
-        { href: "https://voice-email-app.vercel.app", label: "Voice email" },
+        { href: "https://voice-email-app.vercel.app", label: "Sage Mail" },
       ]}
     >
       <div className="cortex-stage">
@@ -312,17 +317,17 @@ function CortexCard() {
           ))}
         </div>
         <div className="cortex-panel">
-          <span>Cortex voice</span>
+          <span>Sage voice</span>
           <strong>{mode.headline}</strong>
           <p>{mode.detail}</p>
         </div>
       </div>
-      <div className="demo-controls" aria-label="Cortex mode selector">
-        {Object.entries(cortexModes).map(([key, item]) => (
+      <div className="demo-controls" aria-label="Sage mode selector">
+        {Object.entries(sageModes).map(([key, item]) => (
           <button
             className={modeKey === key ? "is-active" : ""}
             key={key}
-            onClick={() => setModeKey(key as CortexKey)}
+            onClick={() => setModeKey(key as SageKey)}
             type="button"
           >
             {item.label}
@@ -336,13 +341,90 @@ function CortexCard() {
   );
 }
 
+function KaiCard() {
+  const [modeKey, setModeKey] = useState<KaiKey>("focus");
+  const mode = kaiModes[modeKey];
+
+  return (
+    <ProductCard
+      className="vibe-kai"
+      eyebrow="Kai · adaptive focus coach"
+      title="A focus timer that listens before it decides."
+      body="Kai turns the Pomodoro idea into an adaptive voice coach. The engine chooses block lengths from focus ratings, fatigue, streak, and calendar fit, then explains the decision in plain English."
+      links={[{ href: "https://heykai.vercel.app", label: "Live app" }]}
+    >
+      <div className="kai-stage">
+        <div className="kai-clock">{mode.minutes}</div>
+        <div className="kai-panel">
+          <span>Kai says</span>
+          <strong>{mode.headline}</strong>
+          <p>{mode.detail}</p>
+        </div>
+      </div>
+      <div className="demo-controls" aria-label="Kai mode selector">
+        {Object.entries(kaiModes).map(([key, item]) => (
+          <button
+            className={modeKey === key ? "is-active" : ""}
+            key={key}
+            onClick={() => setModeKey(key as KaiKey)}
+            type="button"
+          >
+            {item.label}
+          </button>
+        ))}
+      </div>
+    </ProductCard>
+  );
+}
+
+function EditCard() {
+  const [modeKey, setModeKey] = useState<EditKey>("safe");
+  const mode = editModes[modeKey];
+
+  return (
+    <ProductCard
+      className="vibe-edit"
+      eyebrow="Ed.it · desktop video agent"
+      title="Drop a clip. Type the brief. Get the cut."
+      body="Ed.it wraps Claude's agent loop around FFmpeg, Gemini video understanding, SQLite memory, traces, budgets, and an Electron shell so video editing becomes a local tool-using agent."
+      links={[{ href: "https://github.com/thegirwhocodes/edit", label: "GitHub" }]}
+    >
+      <div className="edit-stage">
+        <div className="edit-timeline" aria-hidden="true">
+          <i style={{ width: "24%" }} />
+          <i style={{ width: "16%" }} />
+          <i style={{ width: "31%" }} />
+          <i style={{ width: "19%" }} />
+        </div>
+        <div className="edit-panel">
+          <span>Agent render</span>
+          <strong>{mode.headline}</strong>
+          <p>{mode.detail}</p>
+        </div>
+      </div>
+      <div className="demo-controls" aria-label="Ed.it variation selector">
+        {Object.entries(editModes).map(([key, item]) => (
+          <button
+            className={modeKey === key ? "is-active" : ""}
+            key={key}
+            onClick={() => setModeKey(key as EditKey)}
+            type="button"
+          >
+            {item.label}
+          </button>
+        ))}
+      </div>
+    </ProductCard>
+  );
+}
+
 function GoCard() {
   const [modeKey, setModeKey] = useState<GoKey>("calm");
   const mode = goModes[modeKey];
 
   return (
     <ProductCard
-      className="product-card--wide product-card--drop-small vibe-go"
+      className="vibe-go"
       eyebrow="Go · private alpha"
       title="A map with consequences."
       body="Go reads the calendar, computes the walking ETA, and makes lateness expensive. The anti-escape mechanism is the product: remove the payment method, wait seven days."
@@ -398,7 +480,7 @@ function RingsCard() {
 
   return (
     <ProductCard
-      className="product-card--wide vibe-rings"
+      className="vibe-rings"
       eyebrow="Rings · v2.1 plus rework"
       title="A relationship agent with a memory for warmth."
       body="Rings is currently a multi-device Swift relationship CRM. The next version plugs into calendar and communication surfaces so the agent can draft or send check-ins when life gets crowded."
@@ -453,10 +535,10 @@ function AdjutantCard() {
 
   return (
     <ProductCard
-      className="product-card--narrow product-card--drop vibe-adjutant"
-      eyebrow="Adjutant · prototype"
+      className="vibe-adjutant"
+      eyebrow="Adjutant · offline defense AI"
       title="Local RAG for paperwork that should not take a day."
-      body="Adjutant is less finished than the others, so it is framed honestly: an offline prototype that turns a spoken request into a regulation-cited DA-31 packet."
+      body="Adjutant turns a spoken request into a cited, signed-ready Army form packet while the network is off. It is a prototype, but the core point is production-shaped: voice, local retrieval, form fill, refusal when the corpus cannot support an answer."
     >
       <div className="adjutant-stage">
         <div className="adjutant-shell">
@@ -516,15 +598,6 @@ function ProductCard({
         )}
       </div>
     </article>
-  );
-}
-
-function CallLine({ speaker, text }: { speaker: string; text: string }) {
-  return (
-    <div className="sabi-line">
-      <span>{speaker}</span>
-      <p>{text}</p>
-    </div>
   );
 }
 

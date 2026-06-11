@@ -97,7 +97,7 @@ export default function Home() {
         <SectionIntro
           eyebrow="Selected work"
           title="Each project gets its own world."
-          body="The wall below breaks the portfolio-card mold. Every surface is a small working slice: a Sabi lesson, a Dactyl translation loop, a Bethel study, a Cortex briefing, a Go route, a Rings check-in, and an Adjutant form fill."
+          body="One project per row, alternating left and right. Each surface is built to feel like the app itself: the live Sabi demo, a Dactyl translation loop, Sage reading an inbox, Go with money on the line, Kai in focus mode, Ed.it cutting video, and the systems that orbit them."
         />
 
         <ProductShowcase />
