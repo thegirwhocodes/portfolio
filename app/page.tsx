@@ -129,7 +129,7 @@ export default function Home() {
           <Item
             title="Wesleyan University"
             meta="2023 — 2027 · Middletown, CT"
-            body="B.A. Economics, Minor in Data Analysis. CGPA 3.7. Inaugural cohort of the Wesleyan African Scholars program."
+            body="B.A. Economics, Minor in Data Analysis. mGPA: 3.5/4.0. Inaugural cohort of the Wesleyan African Scholars program."
           />
           <Item
             title="Dartmouth Tuck Bridge"
