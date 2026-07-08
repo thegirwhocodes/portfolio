@@ -7,7 +7,7 @@ const RESUME = "/Naomi-Ivie-Resume.pdf";
 const GITHUB = "https://github.com/thegirwhocodes";
 
 const metrics = [
-  { value: "7", label: "AI-native products shipped" },
+  { value: "7", label: "AI-native products built" },
   { value: "4", label: "hackathon / venture-prize wins in 5 months" },
   { value: "$0", label: "internet, smartphone, or data cost for a Sabi learner" },
 ];
@@ -209,7 +209,7 @@ function HeroPanel() {
       <p className="mt-5 text-sm leading-6 text-[var(--color-muted)]">
         The portfolio now leads with the thing that makes Naomi hard to
         categorize: not just a founder, not just a student, but someone who
-        ships real systems in constrained environments.
+        builds working systems in constrained environments.
       </p>
     </aside>
   );

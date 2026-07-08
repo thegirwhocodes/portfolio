@@ -303,7 +303,7 @@ function SageCard() {
       className="vibe-cortex"
       eyebrow="Sage Mail · voice email agent"
       title="An inbox you can clear with your voice."
-      body="Sage reads the important email first, drafts in the user's voice, and gates every consequential action behind approval. Cortex is the broader personal-AI system; Sage Mail is the shipped email surface."
+      body="Sage reads the important email first, drafts in the user's voice, and gates every consequential action behind approval. Cortex is the broader personal-AI system; Sage Mail is the live email surface."
       links={[
         { href: "https://cortex-web-one.vercel.app", label: "Cortex web" },
         { href: "https://voice-email-app.vercel.app", label: "Sage Mail" },
