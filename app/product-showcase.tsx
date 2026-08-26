@@ -100,29 +100,9 @@ const editModes = {
   },
 };
 
-const goModes = {
-  calm: {
-    label: "40 min",
-    eta: "40 min away",
-    leave: "Leave by 2:18 PM",
-    status: "Safe if you leave after this paragraph.",
-    risk: "Charge idle",
-    progress: 34,
-  },
-  danger: {
-    label: "18 min",
-    eta: "18 min away",
-    leave: "Leave now",
-    status: "The geofence has no sympathy.",
-    risk: "$100 armed",
-    progress: 78,
-  },
-};
-
 type DactylKey = keyof typeof dactylSigns;
 type BethelKey = keyof typeof bethelStudies;
 type SageKey = keyof typeof sageModes;
-type GoKey = keyof typeof goModes;
 type KaiKey = keyof typeof kaiModes;
 type EditKey = keyof typeof editModes;
 type RingsState = "draft" | "sent" | "hold";
@@ -134,7 +114,6 @@ export default function ProductShowcase() {
       <DactylCard />
       <BethelCard />
       <SageCard />
-      <GoCard />
       <KaiCard />
       <EditCard />
       <RingsCard />
@@ -408,51 +387,6 @@ function EditCard() {
             className={modeKey === key ? "is-active" : ""}
             key={key}
             onClick={() => setModeKey(key as EditKey)}
-            type="button"
-          >
-            {item.label}
-          </button>
-        ))}
-      </div>
-    </ProductCard>
-  );
-}
-
-function GoCard() {
-  const [modeKey, setModeKey] = useState<GoKey>("calm");
-  const mode = goModes[modeKey];
-
-  return (
-    <ProductCard
-      className="vibe-go"
-      eyebrow="Go · private alpha"
-      title="A map with consequences."
-      body="Go reads the calendar, computes the walking ETA, and makes lateness expensive. The anti-escape mechanism is the product: remove the payment method, wait seven days."
-      links={[{ href: "https://go-place.vercel.app", label: "Live site" }]}
-    >
-      <div className="go-stage">
-        <span className="go-block block-a" />
-        <span className="go-block block-b" />
-        <span className="go-block block-c" />
-        <div className="route-line" />
-        <div className="route-dot start" />
-        <div className="route-dot end" />
-        <div className="go-eta">
-          <span>Current class</span>
-          <strong>{mode.eta}</strong>
-          <p>{mode.leave}. {mode.status}</p>
-          <div className="go-meter" aria-label={`Route risk ${mode.progress}%`}>
-            <i style={{ width: `${mode.progress}%` }} />
-          </div>
-          <b>{mode.risk}</b>
-        </div>
-      </div>
-      <div className="demo-controls" aria-label="Go urgency selector">
-        {Object.entries(goModes).map(([key, item]) => (
-          <button
-            className={modeKey === key ? "is-active" : ""}
-            key={key}
-            onClick={() => setModeKey(key as GoKey)}
             type="button"
           >
             {item.label}
