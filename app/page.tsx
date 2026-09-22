@@ -83,8 +83,8 @@ export default function Home() {
               <Link className="action-link" href={GITHUB} target="_blank" rel="noopener">
                 GitHub
               </Link>
-              <Link className="action-link" href={RESUME} target="_blank" rel="noopener">
-                Resume
+              <Link className="action-link" href="/resume">
+                Résumé & case studies
               </Link>
             </div>
           </div>
@@ -170,8 +170,8 @@ export default function Home() {
             <Link className="nav-link" href="/sabi">
               Sabi
             </Link>
-            <Link className="nav-link" href={RESUME} target="_blank" rel="noopener">
-              Resume
+            <Link className="nav-link" href="/resume">
+              Résumé
             </Link>
           </div>
         </div>
