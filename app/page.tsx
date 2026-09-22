@@ -100,7 +100,7 @@ export default function Home() {
         <SectionIntro
           eyebrow="Selected work"
           title="Each project gets its own world."
-          body="One project per row, alternating left and right. Each surface is built to feel like the app itself: the live Sabi demo, a Dactyl translation loop, Sage reading an inbox, Kai in focus mode, Ed.it cutting video, and the systems that orbit them."
+          body="One project per row, alternating left and right. Each surface is built to feel like the app itself: the live Sabi demo, a Dactyl translation loop, Bethel guiding a study, Sage reading an inbox, and Kai in focus mode."
         />
 
         <ProductShowcase />

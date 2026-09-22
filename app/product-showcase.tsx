@@ -82,30 +82,10 @@ const kaiModes = {
   },
 };
 
-const editModes = {
-  safe: {
-    label: "Safe",
-    headline: "Clean 20-second teaser",
-    detail: "Trimmed hook, normalized audio, captions preserved, exported for Instagram.",
-  },
-  stretch: {
-    label: "Stretch",
-    headline: "Faster social cut",
-    detail: "Added punchier pacing, alternate intro, and a saved memory about the creator's taste.",
-  },
-  wild: {
-    label: "Wild",
-    headline: "Three-version agent loop",
-    detail: "The agent renders Safe, Stretch, and Wild options, then remembers which one the user chooses.",
-  },
-};
-
 type DactylKey = keyof typeof dactylSigns;
 type BethelKey = keyof typeof bethelStudies;
 type SageKey = keyof typeof sageModes;
 type KaiKey = keyof typeof kaiModes;
-type EditKey = keyof typeof editModes;
-type RingsState = "draft" | "sent" | "hold";
 
 export default function ProductShowcase() {
   return (
@@ -115,9 +95,6 @@ export default function ProductShowcase() {
       <BethelCard />
       <SageCard />
       <KaiCard />
-      <EditCard />
-      <RingsCard />
-      <AdjutantCard />
     </div>
   );
 }
@@ -144,6 +121,9 @@ function SabiCard() {
           </Link>
           <Link href="https://sabi.eduforequality.org" target="_blank" rel="noopener">
             Live site
+          </Link>
+          <Link href="https://github.com/thegirwhocodes/sabi-server" target="_blank" rel="noopener">
+            GitHub
           </Link>
         </div>
       </div>
@@ -178,7 +158,10 @@ function DactylCard() {
       eyebrow="Dactyl · Morgan Hacks 2026 · 1st place"
       title="Sign becomes speech in under a second."
       body="We hand-recorded 400+ ASL videos, trained a TensorFlow LSTM over MediaPipe Holistic keypoints, then streamed the loop through Flask and SocketIO for glasses."
-      links={[{ href: "https://devpost.com/software/dactyl", label: "Devpost" }]}
+      links={[
+        { href: "https://devpost.com/software/dactyl", label: "Devpost" },
+        { href: "https://github.com/thegirwhocodes/Dactyl-Final", label: "GitHub" },
+      ]}
     >
       <div className="dactyl-stage">
         <div className="dactyl-camera" aria-hidden="true">
@@ -231,9 +214,10 @@ function BethelCard() {
   return (
     <ProductCard
       className="vibe-bethel"
-      eyebrow="Bethel · native Swift"
+      eyebrow="Bethel · native Swift · In progress"
       title="A study guide, not a chatbot answer."
       body="Bethel turns a spiritual question into a quiet guided study: Scripture, reflection, prayer, and memory surfaced from the user's journal."
+      links={[{ href: "https://github.com/thegirwhocodes/bethel", label: "GitHub" }]}
     >
       <div className="bethel-stage">
         <form className="bethel-form" onSubmit={submitQuestion}>
@@ -280,12 +264,13 @@ function SageCard() {
   return (
     <ProductCard
       className="vibe-cortex"
-      eyebrow="Sage Mail · voice email agent"
+      eyebrow="Sage Mail · voice email agent · In progress"
       title="An inbox you can clear with your voice."
       body="Sage reads the important email first, drafts in the user's voice, and gates every consequential action behind approval. Cortex is the broader personal-AI system; Sage Mail is the live email surface."
       links={[
         { href: "https://cortex-web-one.vercel.app", label: "Cortex web" },
         { href: "https://voice-email-app.vercel.app", label: "Sage Mail" },
+        { href: "https://github.com/thegirwhocodes/sage", label: "GitHub" },
       ]}
     >
       <div className="cortex-stage">
@@ -327,10 +312,13 @@ function KaiCard() {
   return (
     <ProductCard
       className="vibe-kai"
-      eyebrow="Kai · adaptive focus coach"
+      eyebrow="Kai · adaptive focus coach · In progress"
       title="A focus timer that listens before it decides."
       body="Kai turns the Pomodoro idea into an adaptive voice coach. The engine chooses block lengths from focus ratings, fatigue, streak, and calendar fit, then explains the decision in plain English."
-      links={[{ href: "https://heykai.vercel.app", label: "Live app" }]}
+      links={[
+        { href: "https://heykai.vercel.app", label: "Live app" },
+        { href: "https://github.com/thegirwhocodes/kai", label: "GitHub" },
+      ]}
     >
       <div className="kai-stage">
         <div className="kai-clock">{mode.minutes}</div>
@@ -351,149 +339,6 @@ function KaiCard() {
             {item.label}
           </button>
         ))}
-      </div>
-    </ProductCard>
-  );
-}
-
-function EditCard() {
-  const [modeKey, setModeKey] = useState<EditKey>("safe");
-  const mode = editModes[modeKey];
-
-  return (
-    <ProductCard
-      className="vibe-edit"
-      eyebrow="Ed.it · desktop video agent"
-      title="Drop a clip. Type the brief. Get the cut."
-      body="Ed.it wraps Claude's agent loop around FFmpeg, Gemini video understanding, SQLite memory, traces, budgets, and an Electron shell so video editing becomes a local tool-using agent."
-      links={[{ href: "https://github.com/thegirwhocodes/edit", label: "GitHub" }]}
-    >
-      <div className="edit-stage">
-        <div className="edit-timeline" aria-hidden="true">
-          <i style={{ width: "24%" }} />
-          <i style={{ width: "16%" }} />
-          <i style={{ width: "31%" }} />
-          <i style={{ width: "19%" }} />
-        </div>
-        <div className="edit-panel">
-          <span>Agent render</span>
-          <strong>{mode.headline}</strong>
-          <p>{mode.detail}</p>
-        </div>
-      </div>
-      <div className="demo-controls" aria-label="Ed.it variation selector">
-        {Object.entries(editModes).map(([key, item]) => (
-          <button
-            className={modeKey === key ? "is-active" : ""}
-            key={key}
-            onClick={() => setModeKey(key as EditKey)}
-            type="button"
-          >
-            {item.label}
-          </button>
-        ))}
-      </div>
-    </ProductCard>
-  );
-}
-
-function RingsCard() {
-  const [state, setState] = useState<RingsState>("draft");
-
-  const status = {
-    draft: "Draft ready",
-    sent: "Sent by Rings",
-    hold: "Queued for tomorrow",
-  }[state];
-
-  const body = {
-    draft: "Thinking of you today. How did the interview go?",
-    sent: "Thinking of you today. How did the interview go?",
-    hold: "Can I call after dinner tomorrow?",
-  }[state];
-
-  return (
-    <ProductCard
-      className="vibe-rings"
-      eyebrow="Rings · v2.1 plus rework"
-      title="A relationship agent with a memory for warmth."
-      body="Rings is currently a multi-device Swift relationship CRM. The next version plugs into calendar and communication surfaces so the agent can draft or send check-ins when life gets crowded."
-    >
-      <div className="rings-stage">
-        <div className="rings-calendar">
-          <span>Busy week</span>
-          <strong>2 people need warmth today</strong>
-          <p>Calendar says no long calls before 8 PM. Inner circle cadence is overdue.</p>
-        </div>
-        <div className="rings-message">
-          <span>To Tomi</span>
-          <p>{body}</p>
-          <b>{status}</b>
-        </div>
-        <div className="rings-message secondary">
-          <span>To Mom</span>
-          <p>Can I call after dinner?</p>
-          <b>queued</b>
-        </div>
-      </div>
-      <div className="demo-controls" aria-label="Rings agent selector">
-        <button className={state === "draft" ? "is-active" : ""} onClick={() => setState("draft")} type="button">
-          Draft
-        </button>
-        <button className={state === "sent" ? "is-active" : ""} onClick={() => setState("sent")} type="button">
-          Send
-        </button>
-        <button className={state === "hold" ? "is-active" : ""} onClick={() => setState("hold")} type="button">
-          Hold
-        </button>
-      </div>
-    </ProductCard>
-  );
-}
-
-function AdjutantCard() {
-  const [filled, setFilled] = useState(false);
-  const fields = filled
-    ? [
-        ["Soldier", "CPL Ivie"],
-        ["Unit", "HHC 2-327"],
-        ["Dates", "12 Jun - 16 Jun"],
-        ["POC", "SFC Alvarez"],
-      ]
-    : [
-        ["Soldier", ""],
-        ["Unit", ""],
-        ["Dates", ""],
-        ["POC", ""],
-      ];
-
-  return (
-    <ProductCard
-      className="vibe-adjutant"
-      eyebrow="Adjutant · offline defense AI"
-      title="Local RAG for paperwork that should not take a day."
-      body="Adjutant turns a spoken request into a cited, signed-ready Army form packet while the network is off. It is a prototype, but the core point is production-shaped: voice, local retrieval, form fill, refusal when the corpus cannot support an answer."
-    >
-      <div className="adjutant-stage">
-        <div className="adjutant-shell">
-          <span>Offline packet</span>
-          <strong>DA-31 leave form</strong>
-          {fields.map(([label, value]) => (
-            <div key={label}>
-              <span>{label}</span>
-              <b>{value}</b>
-            </div>
-          ))}
-          <p>AR 600-8-10 cited locally from FAISS.</p>
-        </div>
-      </div>
-      <div className="demo-controls" aria-label="Adjutant form selector">
-        <button className={filled ? "is-active" : ""} onClick={() => setFilled(true)} type="button">
-          Fill form
-        </button>
-        <button className={!filled ? "is-active" : ""} onClick={() => setFilled(false)} type="button">
-          Clear
-        </button>
       </div>
     </ProductCard>
   );
