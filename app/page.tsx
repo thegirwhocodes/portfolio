@@ -115,18 +115,18 @@ export default function Home() {
 
         <div className="mt-12 grid gap-6 lg:grid-cols-2">
           <CaseStudy
-            eyebrow="Wesleyan · CSPL 420 · Seeding Impact"
-            title="Personal Impact Plan"
-            body="A five-part dossier mapping the education-access problem in Nigeria as a system — events, structures, stakeholders, and beliefs — and grounding Sabi inside it."
-            href={IMPACT_PLAN}
-            linkLabel="Read the abstract"
-          />
-          <CaseStudy
             eyebrow="Field research · Sabi"
             title="Sabi research dossier"
             body="Telephony and cost analyses, the Nigerian voice-AI landscape, pedagogy notes, STT benchmarks for 8kHz Nigerian phone audio, and the deep-research dossier."
             href={SABI_RESEARCH}
             linkLabel="Open the folder"
+          />
+          <CaseStudy
+            eyebrow="Wesleyan · CSPL 420 · Seeding Impact"
+            title="Personal Impact Plan"
+            body="A five-part dossier mapping the education-access problem in Nigeria as a system — events, structures, stakeholders, and beliefs — and grounding Sabi inside it."
+            href={IMPACT_PLAN}
+            linkLabel="Read the abstract"
           />
         </div>
       </section>
