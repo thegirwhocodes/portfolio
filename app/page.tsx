@@ -5,6 +5,9 @@ const EMAIL = "nivie@wesleyan.edu";
 const LINKEDIN = "https://linkedin.com/in/naomi-ivie";
 const RESUME = "/Naomi-Ivie-Resume.pdf";
 const GITHUB = "https://github.com/thegirwhocodes";
+const IMPACT_PLAN = "/case-studies/personal-impact-plan/cspl-420-seeding-impact-abstract.pdf";
+const SABI_RESEARCH =
+  "https://drive.google.com/drive/folders/16sYzMSHtF-AFgMe-wsC57y6YgRshp2YN?usp=share_link";
 
 const metrics = [
   { value: "7", label: "AI-native products built" },
@@ -83,8 +86,14 @@ export default function Home() {
               <Link className="action-link" href={GITHUB} target="_blank" rel="noopener">
                 GitHub
               </Link>
-              <Link className="action-link" href="/resume">
-                Résumé & case studies
+              <Link className="action-link" href={RESUME} target="_blank" rel="noopener">
+                Résumé
+              </Link>
+              <Link className="action-link" href={IMPACT_PLAN} target="_blank" rel="noopener">
+                Personal Impact Plan
+              </Link>
+              <Link className="action-link" href={SABI_RESEARCH} target="_blank" rel="noopener">
+                Sabi research
               </Link>
             </div>
           </div>
@@ -170,7 +179,7 @@ export default function Home() {
             <Link className="nav-link" href="/sabi">
               Sabi
             </Link>
-            <Link className="nav-link" href="/resume">
+            <Link className="nav-link" href={RESUME} target="_blank" rel="noopener">
               Résumé
             </Link>
           </div>
