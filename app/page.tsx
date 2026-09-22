@@ -5,7 +5,7 @@ const EMAIL = "nivie@wesleyan.edu";
 const LINKEDIN = "https://linkedin.com/in/naomi-ivie";
 const RESUME = "/Naomi-Ivie-Resume.pdf";
 const GITHUB = "https://github.com/thegirwhocodes";
-const IMPACT_PLAN = "/case-studies/personal-impact-plan/cspl-420-seeding-impact-abstract.pdf";
+const IMPACT_PLAN = "/case-studies/personal-impact-plan/cspl-252-personal-impact-plan.pdf";
 const SABI_RESEARCH =
   "https://drive.google.com/drive/folders/16sYzMSHtF-AFgMe-wsC57y6YgRshp2YN?usp=share_link";
 
@@ -122,11 +122,11 @@ export default function Home() {
             linkLabel="Open the folder"
           />
           <CaseStudy
-            eyebrow="Wesleyan · CSPL 420 · Seeding Impact"
+            eyebrow="Wesleyan · CSPL 252 · Final project"
             title="Personal Impact Plan"
-            body="A five-part dossier mapping the education-access problem in Nigeria as a system — events, structures, stakeholders, and beliefs — and grounding Sabi inside it."
+            body="Naomi's theory of change for education access in Nigeria: the intervention she is pursuing, the identity and skills that shape it, and the strategy behind Sabi. Twenty-eight pages, submitted December 2024."
             href={IMPACT_PLAN}
-            linkLabel="Read the abstract"
+            linkLabel="Read the plan"
           />
         </div>
       </section>
