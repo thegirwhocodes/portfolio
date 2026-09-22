@@ -89,12 +89,6 @@ export default function Home() {
               <Link className="action-link" href={RESUME} target="_blank" rel="noopener">
                 Résumé
               </Link>
-              <Link className="action-link" href={IMPACT_PLAN} target="_blank" rel="noopener">
-                Personal Impact Plan
-              </Link>
-              <Link className="action-link" href={SABI_RESEARCH} target="_blank" rel="noopener">
-                Sabi research
-              </Link>
             </div>
           </div>
 
@@ -112,7 +106,32 @@ export default function Home() {
         <ProductShowcase />
       </section>
 
-      <section id="recognition" className="border-y border-[var(--color-rule)] bg-[var(--color-soft)]">
+      <section id="case-studies" className="mx-auto max-w-6xl px-6 pb-4 sm:px-8 lg:px-10">
+        <SectionIntro
+          eyebrow="Case studies"
+          title="The research underneath the work."
+          body="The systems research I did before Sabi, and the running research library that keeps it honest."
+        />
+
+        <div className="mt-12 grid gap-6 lg:grid-cols-2">
+          <CaseStudy
+            eyebrow="Wesleyan · CSPL 420 · Seeding Impact"
+            title="Personal Impact Plan"
+            body="A five-part dossier mapping the education-access problem in Nigeria as a system — events, structures, stakeholders, and beliefs — and grounding Sabi inside it."
+            href={IMPACT_PLAN}
+            linkLabel="Read the abstract"
+          />
+          <CaseStudy
+            eyebrow="Field research · Sabi"
+            title="Sabi research dossier"
+            body="Telephony and cost analyses, the Nigerian voice-AI landscape, pedagogy notes, STT benchmarks for 8kHz Nigerian phone audio, and the deep-research dossier."
+            href={SABI_RESEARCH}
+            linkLabel="Open the folder"
+          />
+        </div>
+      </section>
+
+      <section id="recognition" className="mt-20 border-y border-[var(--color-rule)] bg-[var(--color-soft)] lg:mt-28">
         <div className="mx-auto max-w-6xl px-6 py-20 sm:px-8 lg:grid lg:grid-cols-[0.8fr_1.2fr] lg:gap-16 lg:px-10 lg:py-24">
           <SectionIntro
             eyebrow="Recognition"
@@ -267,6 +286,42 @@ function Item({
       <p className="eyebrow text-[var(--color-muted)]">{meta}</p>
       <h3 className="mt-3 font-serif text-2xl">{title}</h3>
       <p className="mt-4 text-[15px] leading-7 text-[var(--color-muted)]">{body}</p>
+    </article>
+  );
+}
+
+function CaseStudy({
+  eyebrow,
+  title,
+  body,
+  href,
+  linkLabel,
+}: {
+  eyebrow: string;
+  title: string;
+  body: string;
+  href: string;
+  linkLabel: string;
+}) {
+  return (
+    <article className="flex flex-col rounded-[8px] border border-[var(--color-rule)] bg-white p-6 sm:p-8">
+      <p className="eyebrow text-[var(--color-muted)]">{eyebrow}</p>
+      <h3 className="mt-3 font-serif text-2xl leading-tight sm:text-3xl">
+        {title}
+      </h3>
+      <p className="mt-4 flex-1 text-[15px] leading-7 text-[var(--color-muted)]">
+        {body}
+      </p>
+      <div className="mt-6">
+        <Link
+          className="action-link"
+          href={href}
+          target="_blank"
+          rel="noopener"
+        >
+          {linkLabel} →
+        </Link>
+      </div>
     </article>
   );
 }
