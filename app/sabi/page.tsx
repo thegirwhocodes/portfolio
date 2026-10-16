@@ -32,8 +32,6 @@ const proof = [
   "MIT Sloan Africa Business Challenge — 2nd place",
   "Wesleyan New Venture Awards — Grand Prize",
   "UNICEF AI Ventures Accelerator — inaugural cohort",
-  "Schmidt Futures x Rhodes Trust Rise for the World — finalist",
-  "Patricelli Center for Entrepreneurship — Social Impact Fellow",
 ];
 
 export default function SabiPage() {
